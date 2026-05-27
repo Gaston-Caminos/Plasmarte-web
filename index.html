@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aerografía Plasmarte | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="imgs/plasmarte_logo.png" alt="Plasmarte Logo" class="logo">
+        </div>
+        <nav>
+            <a href="#galeria">Obras</a>
+            <a href="#sobre-mi">El Artista</a>
+            <a href="#herramientas-section">Mis Herramientas</a>
+            <a href="#contacto">Contacto</a>
+            <a href="https://www.instagram.com/tu_usuario" target="_blank" class="icono-red"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@tu_usuario" target="_blank" class="icono-red"><i class="fa-brands fa-tiktok"></i></a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <img src="imgs/plasmarte_logo.png" alt="Aerografía Plasmarte" class="logo-hero">
+        <h1>Plasmar el arte en cualquier superficie.</h1>
+        <p>Aerografía, pintura personalizada y artesanías con alma propia.</p>
+    </section>
+
+    <div class="filtros">
+        <button class="btn-filtro active" data-categoria="todos">Todos</button>
+        <button class="btn-filtro" data-categoria="aerografia">Aerografía</button>
+        <button class="btn-filtro" data-categoria="custom">Custom</button>
+        <button class="btn-filtro" data-categoria="artesanias">Artesanías</button>
+        <button class="btn-filtro" data-categoria="murales">Murales</button>
+    </div>
+
+    <section id="galeria" class="galeria-grid">
+        <div class="obra item-v" data-categoria="aerografia" data-descripcion="Realizado con aerógrafo doble acción sobre madera de roble, 40x40cm.">
+            <img src="imgs/gato_alicia.png" alt="Obra 1">
+            <div class="obra-info"><h3>Gato Sonriente</h3></div>
+        </div>
+
+        <div class="obra item-h" data-categoria="aerografia" data-descripcion="Cuadro de 120x80cm realizado con técnica mixta de aerografía y pincel tradicional.">
+            <img src="imgs/respiro.png" alt="Obra 2">
+            <div class="obra-info"><h3>Respiro</h3></div>
+        </div>
+        <div class="obra" data-categoria="aerografia">
+            <img src="imgs/salvame.png" alt="Obra 3">
+            <div class="obra-info"><h3>Sálvame</h3></div>
+        </div>
+        <div class="obra item-v" data-categoria="aerografia">
+            <img src="imgs/guason.png" alt="Obra 4">
+            <div class="obra-info"><h3>Implosión</h3></div>
+        </div>
+        <div class="obra item-v" data-categoria="aerografia">
+            <img src="imgs/la_eterna_espera.png" alt="Obra 5">
+            <div class="obra-info"><h3>La Eterna Espera del Olvido</h3></div>
+        </div>
+
+        <div class="obra" data-categoria="aerografia">
+            <img src="imgs/abstracto.png" alt="Obra 6">
+            <div class="obra-info"><h3>Abstracto</h3></div>
+        </div>
+        <div class="obra" data-categoria="murales">
+            <img src="imgs/carlitos.png" alt="Obra 7">
+            <div class="obra-info"><h3>Mural Carlitos Balá</h3></div>
+        </div>
+        <div class="obra" data-categoria="artesanias">
+            <img src="imgs/casa_miniatura.png" alt="Obra 8">
+            <div class="obra-info"><h3>Casa en miniatura</h3></div>
+        </div>
+        <div class="obra item-h" data-categoria="aerografia">
+            <img src="imgs/che.png" alt="Obra 9">
+            <div class="obra-info"><h3>Che Guevara</h3></div>
+        </div>
+        <div class="obra item-v" data-categoria="custom">
+            <img src="imgs/einstein_utn.png" alt="Obra 10">
+            <div class="obra-info"><h3>Campera customizada UTN</h3></div>
+        </div>
+
+        <div class="obra" data-categoria="custom">
+            <img src="imgs/ferrari_f40.png" alt="Obra 11">
+            <div class="obra-info"><h3>Cuaderno customizado Ferrari F-40</h3></div>
+        </div>
+        <div class="obra item-h" data-categoria="custom">
+            <img src="imgs/gallardo.png" alt="Obra 12">
+            <div class="obra-info"><h3>Bandera River Plate</h3></div>
+        </div>
+        <div class="obra" data-categoria="aerografia">
+            <img src="imgs/grito_silencioso.png" alt="Obra 13">
+            <div class="obra-info"><h3>Grito Silencioso</h3></div>
+        </div>
+        <div class="obra item-v" data-categoria="custom">
+            <img src="imgs/la_bruja.png" alt="Obra 14">
+            <div class="obra-info"><h3>La Bruja del Horrio</h3></div>
+        </div>
+        <div class="obra item-h" data-categoria="murales">
+            <img src="imgs/malvinas.png" alt="Obra 15">
+            <div class="obra-info"><h3>Mural Malvinas Argentinas</h3></div>
+        </div>
+
+        <div class="obra item-v" data-categoria="murales">
+            <img src="imgs/minions_culo.png" alt="Obra 16">
+            <div class="obra-info"><h3>Mural Minions</h3></div>
+        </div>
+        <div class="obra item-h" data-categoria="murales">
+            <img src="imgs/mural_bob.png" alt="Obra 17">
+            <div class="obra-info"><h3>Mural Bob Esponja y Patricio Estrella</h3></div>
+        </div>
+        <div class="obra" data-categoria="custom">
+            <img src="imgs/nosferatu.png" alt="Obra 18">
+            <div class="obra-info"><h3>Nosferatu</h3></div>
+        </div>
+        <div class="obra" data-categoria="aerografia">
+            <img src="imgs/origen.png" alt="Obra 19">
+            <div class="obra-info"><h3>Origen</h3></div>
+        </div>
+
+        <div class="obra item-v" data-categoria="artesanias">
+            <img src="imgs/estatua_jesus.png" alt="Obra 20">
+            <div class="obra-info"><h3>Estatua Jesus</h3></div>
+        </div>
+    </section>
+
+    <div class="contenedor-ver-mas" style="text-align: center; margin-bottom: 4rem;">
+        <button id="btn-ver-mas" class="btn-contacto" style="border: none; cursor: pointer;">Ver más obras</button>
+    </div>
+
+    <section id="sobre-mi" class="artista-section">
+        <div class="artista-contenedor">
+            <img src="imgs/carlos_artista.png" alt="El Artista trabajando" class="artista-foto">
+            <div class="artista-texto">
+                <h2>El arte en mis manos</h2>
+                <p>Soy <strong>Carlos Alberto Caminos</strong>, el creador detrás de <strong>Plasmarte Aerografía</strong>. Con años de experiencia y un aerógrafo siempre listo, mi pasión es transformar cualquier superficie en un lienzo vivo. Desde tanques de motos y cascos, hasta cuadros y piezas artesanales.</p>
+                <p>Cada obra es única, pensada y diseñada con paciencia, buscando que el resultado final tenga su propia alma.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="herramientas-section">
+        <h2>Mis Herramientas</h2>
+        <p>El aerógrafo es una extensión de mi mano. Estas son las herramientas con las que doy vida a cada proyecto.</p>
+        
+        <div class="herramientas-grid">
+            <div class="herramienta">
+                <img src="imgs/iwata_eclipse.png" alt="Aerógrafo Iwata Eclipse HP-CS">
+                <h3>Iwata Eclipse HP-CS</h3>
+                <p>Mi caballo de batalla para detalles y fondeos de áreas amplias.</p>
+            </div>
+            <div class="herramienta">
+                <img src="imgs/olympo.jpg" alt="Aerógrafo Olympo">
+                <h3>Olympo 130 Deluxe</h3>
+                <p>Control para detalles finos.</p>
+            </div>
+            <div class="herramienta">
+                <img src="imgs/h&s_infinity.jpg" alt="Aerógrafo Harder & Steenbeck">
+                <h3>Harder & Steenbeck Infinity</h3>
+                <p>Precisión milimétrica para detalles finos y texturas hiperrealistas.</p>
+            </div>
+
+            <div class="herramienta">
+                <img src="imgs/pistola_k3.jpg" alt="Pistola aerográfica K3">
+                <h3>Pistola aerográfica K3</h3>
+                <p>Ideal para cobertura de grandes superficies, mi herramienta principal para murales.</p>
+            </div>
+        </div>
+</section>
+
+    <footer id="contacto">
+        <h2>¿Tenés una idea en mente?</h2>
+        <p>Contactame para trabajos personalizados o consultas.</p>
+        <a href="https://wa.me/+5491130114105" class="btn-contacto" target="_blank">Escribinos por WhatsApp</a>
+        
+        <div class="redes-footer">
+            <p>¡Seguime en mis redes!</p>
+            <a href="https://www.instagram.com/tu_usuario" target="_blank" class="icono-red"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@tu_usuario" target="_blank" class="icono-red"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="cerrar-lightbox">&times;</span>
+        <img class="lightbox-img" id="img-ampliada">
+        <div id="caption-lightbox"></div>
+        <p id="desc-lightbox"></p> <a href="#" id="btn-comprar-lightbox" class="btn-contacto btn-comprar" target="_blank">Consultar por esta obra</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

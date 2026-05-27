@@ -1,0 +1,419 @@
+/* Variables de color basadas en el logo */
+:root {
+    --color-fondo: #F5F3ED; /* Crema del logo */
+    --color-primario: #0B2A4A; /* Azul oscuro del logo */
+    --color-acento: #FF3300; /* Naranja/Rojo del chorro de pintura */
+    
+    --fuente-titulos: 'Caveat', cursive; /* Desestructurada, parece escrita a mano */
+    --fuente-cuerpo: 'Montserrat', sans-serif; /* Moderna y muy legible */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-primario);
+    font-family: var(--fuente-cuerpo);
+    line-height: 1.6;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999; /* Asegura que quede por encima de todo (menos el lightbox que tiene 1000) */
+    background-color: var(--color-fondo); /* Fondo sólido crema */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave hacia abajo */
+    transition: all 0.3s ease;
+}
+
+.logo {
+    max-height: 80px;
+}
+
+nav a {
+    color: var(--color-primario);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--color-acento);
+}
+
+/* Estilo específico para los íconos de redes en el nav */
+.icono-red {
+    font-size: 1.5rem; /* Los hacemos un poco más grandes que el texto */
+    vertical-align: middle;
+}
+
+.icono-red:hover {
+    color: var(--color-acento);
+    transform: scale(1.1); /* Que crezcan un poquito al pasar el mouse */
+}
+
+/* ======================================
+   HERO
+   ====================================== */
+
+.hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    white-space: nowrap; 
+    margin-bottom: 1rem;
+}
+
+.logo-hero {
+    max-width: 300px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.1));
+    transition: all 0.4s ease; /* Transición suave */
+}
+
+.logo-hero:hover {
+    transform: scale(1.08); /* Aumenta el tamaño */
+    filter: drop-shadow(0px 0px 25px rgba(255, 51, 0, 0.6)); /* Brillo con el color acento */
+}
+
+/* ===============================
+   EL ARTISTA
+   =============================== */
+.artista-section {
+    padding: 5rem 2rem;
+    background-color: #fff; /* Para dar un corte limpio con el color de fondo crema */
+}
+
+.artista-contenedor {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.artista-foto {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid var(--color-primario);
+    filter: grayscale(40%);
+    transition: all 0.5s ease;
+}
+
+.artista-foto:hover {
+    filter: grayscale(0%); /* Vuelve a todo color */
+    transform: scale(1.05); /* Se acerca un poquito */
+    box-shadow: 0 15px 30px rgba(11, 42, 74, 0.3); /* Sombra difuminada elegante */
+}
+
+.artista-texto h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: var(--fuente-titulos);
+}
+
+.artista-texto p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+
+/* ================================
+    FILTRO DE TÉCNICAS 
+    =============================== */
+.filtros {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap; 
+    padding: 0 1rem;
+}
+
+.btn-filtro {
+    background: transparent;
+    border: 2px solid var(--color-primario);
+    border-radius: 25px;
+    color: var(--color-primario);
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-filtro.active, .btn-filtro:hover {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+}
+
+/* =====================================
+    OBRAS
+    ==================================== */
+/* Grilla tipo Masonry (Pinterest) */
+.galeria-grid {
+    column-count: 3; /* Cantidad de columnas en escritorio */
+    column-gap: 20px; /* Espacio entre columnas */
+    padding: 0 2rem 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.obra {
+    position: relative;
+    overflow: hidden;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    margin-bottom: 20px; /* Espacio hacia abajo */
+    break-inside: avoid; /* Evita que una foto se corte a la mitad entre dos columnas */
+    cursor: pointer;
+}
+
+.obra img {
+    width: 100%;
+    display: block; /* Importante para sacar el margen fantasma de las imágenes */
+    transition: transform 0.5s ease;
+}
+
+/* Forzar que algunas imágenes rompan la estructura */
+.item-v {
+    grid-row: span 2;
+}
+
+.item-h {
+    grid-column: span 2;
+}
+
+.obra:hover img {
+    transform: scale(1.05);
+}
+
+.obra-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(transparent, rgba(11, 42, 74, 0.8));
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.obra:hover .obra-info {
+    opacity: 1;
+}
+
+/* ==================================
+   HERRAMIENTAS
+   ================================== */
+
+.herramientas-section {
+    padding: 5rem 2rem;
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    text-align: center;
+}
+
+.herramientas-section h2 {
+    font-family: var(--fuente-titulos);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.herramientas-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    flex-wrap: wrap; /* Para que se adapte en celulares */
+}
+
+.herramienta {
+    max-width: 300px;
+}
+
+.herramienta img {
+    width: 100%;
+    border-radius: 25px;
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-acento);
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+}
+
+.herramienta:hover img {
+    transform: translateY(-10px) scale(1.02); 
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4); 
+    border: 1px solid var(--color-fondo);
+}
+
+.herramienta h3 {
+    color: var(--color-acento);
+    margin-bottom: 0.5rem;
+}
+
+/* ==================================
+    FOOTER
+    ================================= */
+footer {
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid rgba(245, 243, 237, 0.2);
+}
+
+.btn-contacto {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background-color: var(--color-acento);
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+/* ==================================
+    REDES EN EL FOOTER
+   ================================== */
+.redes-footer {
+    margin-top: 3rem; /* Lo separa del botón de WhatsApp */
+}
+
+.redes-footer p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #ccc; /* Un gris clarito para que no compita con el título */
+}
+
+.redes-footer .icono-red {
+    color: var(--color-fondo);
+    margin: 0 0.5rem; /* Separación entre íconos */
+    font-size: 2rem; /* Los hacemos bien grandes */
+}
+
+.redes-footer .icono-red:hover {
+    color: var(--color-acento); /* Al pasar el mouse se ponen naranjas/rojos */
+}
+
+/* =========================================
+ LIGHTBOX (Pantalla Completa) 
+ =========================================== */
+.lightbox {
+    display: none; /* En JS se cambia a 'flex' en vez de 'block' */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(11, 42, 74, 0.9); 
+    backdrop-filter: blur(8px);
+    
+    /* Flexbox hace la magia del centrado absoluto: */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.lightbox-img {
+    margin: 0; 
+    max-width: 90%;
+    max-height: 65vh; 
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: zoom 0.3s ease;
+}
+
+#caption-lightbox {
+    margin-top: 15px;
+    color: var(--color-fondo);
+    font-size: 2rem;
+    font-family: var(--fuente-titulos);
+}
+
+#desc-lightbox {
+    color: #ccc;
+    font-size: 1.1rem;
+    max-width: 600px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.cerrar-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: var(--color-fondo);
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.cerrar-lightbox:hover {
+    color: var(--color-acento);
+}
+
+.btn-comprar {
+    display: table;
+    margin: 15px auto;
+    font-size: 1.2rem;
+}
+
+@keyframes zoom {
+    from {transform: scale(0.8); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+
+/* Cambiamos el cursor en la galería para que se entienda que es clickeable */
+.obra {
+    cursor: pointer; 
+}
+
+/* ====================================
+   RESPONSIVIDAD
+   ==================================== */
+@media (max-width: 768px) {
+    .artista-contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+    .artista-foto {
+        box-shadow: 0px 10px 0px var(--color-acento); /* Sombra hacia abajo en mobile */
+    }
+    .hero h1 { white-space: normal;}
+
+    
+}
+
+/* Grilla responsiva */
+@media (max-width: 900px) {
+    .galeria-grid { column-count: 2; }
+}
+@media (max-width: 600px) {
+    .galeria-grid { column-count: 1; }
+}
