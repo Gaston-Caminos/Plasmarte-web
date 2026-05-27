@@ -1,7 +1,9 @@
-// --- LÓGICA DE FILTROS Y BOTÓN "VER MÁS" ---
-let limiteObras = 9; // Cuántas obras mostrar inicialmente
+// --- LÓGICA DE FILTROS Y BOTONES "VER MÁS" / "VER MENOS" ---
+const cantidadInicial = 9;
+let limiteObras = cantidadInicial; 
 const obras = document.querySelectorAll('.obra');
 const btnVerMas = document.getElementById('btn-ver-mas');
+const btnVerMenos = document.getElementById('btn-ver-menos'); // Referencia al nuevo botón
 
 function renderizarGaleria() {
     const categoriaActiva = document.querySelector('.btn-filtro.active').getAttribute('data-categoria');
@@ -22,21 +24,37 @@ function renderizarGaleria() {
         }
     });
 
-    // Ocultar botón si ya no hay más para mostrar de esta categoría
+    // Lógica para mostrar/ocultar "Ver más"
     if (obrasVisiblesContador <= limiteObras) {
         btnVerMas.style.display = 'none';
     } else {
         btnVerMas.style.display = 'inline-block';
+    }
+
+    // Lógica para mostrar/ocultar "Ver menos" (solo aparece si ampliamos el límite)
+    if (limiteObras > cantidadInicial) {
+        btnVerMenos.style.display = 'inline-block';
+    } else {
+        btnVerMenos.style.display = 'none';
     }
 }
 
 // Al cargar la web, aplicar lógica
 renderizarGaleria();
 
-// Al hacer click en Ver Más
+// Al hacer click en "Ver Más"
 btnVerMas.addEventListener('click', () => {
-    limiteObras += 9; // Mostrar 9 más
+    limiteObras += 9; 
     renderizarGaleria();
+});
+
+// Al hacer click en "Ver Menos"
+btnVerMenos.addEventListener('click', () => {
+    limiteObras = cantidadInicial; // Volvemos al límite original de 9
+    renderizarGaleria();
+    
+    // Desliza la pantalla suavemente hasta el inicio de la galería
+    document.getElementById('galeria').scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 // Lógica al clickear los botones de filtros
@@ -44,7 +62,7 @@ document.querySelectorAll('.btn-filtro').forEach(boton => {
     boton.addEventListener('click', () => {
         document.querySelector('.btn-filtro.active').classList.remove('active');
         boton.classList.add('active');
-        limiteObras = 9; // Reseteamos el límite al cambiar de categoría
+        limiteObras = cantidadInicial; // Reseteamos al límite inicial al cambiar de filtro
         renderizarGaleria();
     });
 });
@@ -77,3 +95,26 @@ obras.forEach(obra => {
 btnCerrar.addEventListener('click', () => lightbox.style.display = 'none');
 lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.style.display = 'none'; });
 document.addEventListener('keydown', (e) => { if (e.key === "Escape") lightbox.style.display = 'none'; });
+
+// --- LÓGICA DEL BOTÓN VOLVER ARRIBA ---
+const btnVolverArriba = document.getElementById('btn-volver-arriba');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+        btnVolverArriba.classList.add('mostrar'); // Agrega la clase con opacity 1
+    } else {
+        btnVolverArriba.classList.remove('mostrar'); // Saca la clase y vuelve a opacity 0
+    }
+});
+
+btnVolverArriba.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// --- PROTECCIÓN DE IMÁGENES ---
+// Bloquear el clic derecho en todas las imágenes de la página
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault(); // Evita que se abra el menú de "Guardar imagen"
+    }
+});

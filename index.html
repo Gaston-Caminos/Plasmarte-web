@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aerografía Plasmarte | Portfolio</title>
+
+    <link rel="icon" href="imgs/icono.ico">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -12,21 +14,22 @@
 
     <header>
         <div class="logo-container">
-            <img src="imgs/plasmarte_logo.png" alt="Plasmarte Logo" class="logo">
+            <a href="#top"><img src="imgs/plasmarte_logo.png" alt="Plasmarte Logo" class="logo"></a>
         </div>
         <nav>
             <a href="#galeria">Obras</a>
             <a href="#sobre-mi">El Artista</a>
             <a href="#herramientas-section">Mis Herramientas</a>
             <a href="#contacto">Contacto</a>
-            <a href="https://www.instagram.com/tu_usuario" target="_blank" class="icono-red"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@tu_usuario" target="_blank" class="icono-red"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/plasmarte_aerografia/" target="_blank" class="icono-red"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@plasmarte.aerografia" target="_blank" class="icono-red"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/aerografiaplasmarte" target="_blank" class="icono-red"><i class="fa-brands fa-facebook"></i></a>
         </nav>
     </header>
 
     <section class="hero">
         <img src="imgs/plasmarte_logo.png" alt="Aerografía Plasmarte" class="logo-hero">
-        <h1>Plasmar el arte en cualquier superficie.</h1>
+        <h1>Respirá Arte en tu Vida Diaria.</h1>
         <p>Aerografía, pintura personalizada y artesanías con alma propia.</p>
     </section>
 
@@ -126,8 +129,10 @@
         </div>
     </section>
 
-    <div class="contenedor-ver-mas" style="text-align: center; margin-bottom: 4rem;">
+    <div class="contenedor-ver-mas" style="text-align: center; margin-bottom: 4rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
         <button id="btn-ver-mas" class="btn-contacto" style="border: none; cursor: pointer;">Ver más obras</button>
+        
+        <button id="btn-ver-menos" class="btn-contacto" style="border: none; cursor: pointer; display: none; background-color: var(--color-primario);">Ver menos obras</button>
     </div>
 
     <section id="sobre-mi" class="artista-section">
@@ -168,17 +173,18 @@
                 <p>Ideal para cobertura de grandes superficies, mi herramienta principal para murales.</p>
             </div>
         </div>
-</section>
+    </section>
 
     <footer id="contacto">
         <h2>¿Tenés una idea en mente?</h2>
         <p>Contactame para trabajos personalizados o consultas.</p>
-        <a href="https://wa.me/+5491130114105" class="btn-contacto" target="_blank">Escribinos por WhatsApp</a>
+        <a href="https://wa.me/+5491130114105" class="btn-contacto" target="_blank">¡Escribime por WhatsApp!</a>
         
         <div class="redes-footer">
             <p>¡Seguime en mis redes!</p>
-            <a href="https://www.instagram.com/tu_usuario" target="_blank" class="icono-red"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@tu_usuario" target="_blank" class="icono-red"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/plasmarte_aerografia/" target="_blank" class="icono-red"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@plasmarte.aerografia" target="_blank" class="icono-red"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/aerografiaplasmarte" target="_blank" class="icono-red"><i class="fa-brands fa-facebook"></i></a>
         </div>
     </footer>
 
@@ -189,6 +195,9 @@
         <p id="desc-lightbox"></p> <a href="#" id="btn-comprar-lightbox" class="btn-contacto btn-comprar" target="_blank">Consultar por esta obra</a>
     </div>
 
+    <button id="btn-volver-arriba" class="btn-flotante" title="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
     <script src="script.js"></script>
 </body>
 </html>

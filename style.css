@@ -38,6 +38,12 @@ header {
     transition: all 0.3s ease;
 }
 
+/* Evita que las imágenes se puedan arrastrar o seleccionar */
+img {
+    -webkit-user-drag: none; 
+    user-select: none;
+}
+
 .logo {
     max-height: 80px;
 }
@@ -79,21 +85,41 @@ nav a:hover {
 
 .hero h1 {
     font-size: clamp(1.8rem, 4vw, 3.5rem);
+    align-items: center;
+    text-align: center;
     white-space: nowrap; 
     margin-bottom: 1rem;
+    width: 100%; /* Asegura que tome todo el ancho disponible para centrarse bien */
 }
+
 
 .logo-hero {
     max-width: 300px;
     width: 100%;
     margin-bottom: 1.5rem;
     filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.1));
-    transition: all 0.4s ease; /* Transición suave */
+    
+    /* Ejecuta la animación en un bucle infinito que dura 6 segundos */
+    animation: latidoPintura 6s infinite ease-in-out; 
+    /* Quitamos transform de acá para que no pelee con los keyframes */
+    transition: filter 0.4s ease; 
 }
 
+/* Efecto hover: frena el "latido" y le da el brillo naranja/rojo y lo agranda */
 .logo-hero:hover {
-    transform: scale(1.08); /* Aumenta el tamaño */
-    filter: drop-shadow(0px 0px 25px rgba(255, 51, 0, 0.6)); /* Brillo con el color acento */
+    animation-play-state: paused; /* Frena la animación automática */
+    transform: scale(1.08); /* Se agranda fijo */
+    filter: drop-shadow(0px 0px 25px rgba(255, 51, 0, 0.6));
+}
+
+/* Definimos la animación de agitación ocasional */
+@keyframes latidoPintura {
+    0%, 85% { transform: scale(1) rotate(0deg); }
+    88% { transform: scale(1.05) rotate(4deg); }
+    91% { transform: scale(1) rotate(-4deg); }
+    94% { transform: scale(1.03) rotate(2deg); }
+    97% { transform: scale(1) rotate(-2deg); }
+    100% { transform: scale(1) rotate(0deg); }
 }
 
 /* ===============================
@@ -293,6 +319,13 @@ footer {
     text-decoration: none;
     font-weight: bold;
     border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-contacto:hover {
+    background-color: #d62b00; /* Un rojo apenitas más oscuro que el color acento */
+    transform: translateY(-3px); /* Se levanta 3 píxeles */
+    box-shadow: 0 5px 15px rgba(255, 51, 0, 0.4); /* Le da un resplandor naranja/rojo */
 }
 
 /* ==================================
@@ -316,6 +349,38 @@ footer {
 
 .redes-footer .icono-red:hover {
     color: var(--color-acento); /* Al pasar el mouse se ponen naranjas/rojos */
+}
+
+/* ==================================
+    BOTÓN VOLVER ARRIBA
+   ================================== */
+.btn-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--color-primario);
+    color: var(--color-fondo);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-flotante.mostrar {
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-flotante:hover {
+    background-color: var(--color-acento);
+    transform: translateY(-5px);
 }
 
 /* =========================================
