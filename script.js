@@ -1,7 +1,37 @@
+// --- 1. INYECTAR DATOS DESDE datos.js ---
+
+// Cargar la Bio
+document.getElementById('bio-p1').innerHTML = datosPlasmarte.bio.parrafo1;
+document.getElementById('bio-p2').innerHTML = datosPlasmarte.bio.parrafo2;
+
+// Generar la Galería dinámicamente
+const contenedorGaleria = document.getElementById('galeria');
+let htmlGaleria = '';
+
+datosPlasmarte.obras.forEach(obra => {
+    // Si la obra no tiene año o dimensiones, le asignamos un string vacío
+    const anoObra = obra.ano ? obra.ano : '';
+    const dimObra = obra.dimensiones ? obra.dimensiones : '';
+
+    htmlGaleria += `
+        <div class="obra ${obra.formatoVisual}" 
+             data-categoria="${obra.categoria}" 
+             data-descripcion="${obra.descripcion}"
+             data-ano="${anoObra}"
+             data-dimensiones="${dimObra}">
+            <img src="${obra.imagen}" alt="${obra.titulo}">
+            <div class="obra-info"><h3>${obra.titulo}</h3></div>
+        </div>
+    `;
+});
+
+// Inyecto todo el HTML de golpe en el contenedor
+contenedorGaleria.innerHTML = htmlGaleria;
+
 // --- LÓGICA DE FILTROS Y BOTONES "VER MÁS" / "VER MENOS" ---
+const obras = document.querySelectorAll('.obra');
 const cantidadInicial = 9;
 let limiteObras = cantidadInicial; 
-const obras = document.querySelectorAll('.obra');
 const btnVerMas = document.getElementById('btn-ver-mas');
 const btnVerMenos = document.getElementById('btn-ver-menos'); // Referencia al nuevo botón
 
@@ -72,8 +102,16 @@ const lightbox = document.getElementById('lightbox');
 const imgAmpliada = document.getElementById('img-ampliada');
 const captionText = document.getElementById('caption-lightbox');
 const descText = document.getElementById('desc-lightbox');
+const metaAno = document.getElementById('meta-ano');
+const metaDim = document.getElementById('meta-dim');
 const btnCerrar = document.querySelector('.cerrar-lightbox');
 const btnComprar = document.getElementById('btn-comprar-lightbox');
+
+// Variables para el botón de ocultar panel
+const btnToggleInfo = document.getElementById('btn-toggle-info');
+const iconoToggle = document.getElementById('icono-toggle');
+const lightboxSidebar = document.getElementById('lightbox-sidebar');
+
 const numeroWhatsApp = "5491130114105";
 
 obras.forEach(obra => {
@@ -81,19 +119,49 @@ obras.forEach(obra => {
         const img = obra.querySelector('img');
         const titulo = obra.querySelector('h3').innerText;
         const descripcion = obra.getAttribute('data-descripcion') || ''; 
+        const ano = obra.getAttribute('data-ano') || '';
+        const dim = obra.getAttribute('data-dimensiones') || '';
         
-        lightbox.style.display = 'flex'; // Usamos FLEX en vez de block para centrar
+        lightbox.style.display = 'flex'; 
         imgAmpliada.src = img.src;
         captionText.innerHTML = titulo;
-        descText.innerHTML = descripcion; // Inyectamos la descripción
+        descText.innerHTML = descripcion; 
+        
+        // Formatear los metadatos (solo los mostramos si tu papá los cargó en datos.js)
+        metaAno.innerHTML = ano ? `Año: ${ano}` : '';
+        metaDim.innerHTML = dim ? ` | Dimensiones: ${dim}` : '';
+        // Limpiamos el separador " | " si no hay año pero sí hay dimensión
+        if (!ano && dim) metaDim.innerHTML = `Dimensiones: ${dim}`;
+
+        // Reseteamos el panel para que siempre aparezca visible al abrir una obra nueva
+        lightboxSidebar.classList.remove('oculto');
+        iconoToggle.classList.remove('fa-eye');
+        iconoToggle.classList.add('fa-eye-slash');
 
         const mensaje = `¡Hola Carlos! Estuve viendo tu portfolio y me interesa consultar por la obra: "${titulo}".`;
         btnComprar.href = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
     });
 });
 
+// Lógica para el botón del ojito (Ocultar/Mostrar Info)
+btnToggleInfo.addEventListener('click', () => {
+    lightboxSidebar.classList.toggle('oculto');
+    
+    // Cambiamos el ícono del botón
+    if (lightboxSidebar.classList.contains('oculto')) {
+        iconoToggle.classList.remove('fa-eye-slash');
+        iconoToggle.classList.add('fa-eye'); // Ícono de ojo abierto
+    } else {
+        iconoToggle.classList.remove('fa-eye');
+        iconoToggle.classList.add('fa-eye-slash'); // Ícono de ojo tachado
+    }
+});
+
 btnCerrar.addEventListener('click', () => lightbox.style.display = 'none');
-lightbox.addEventListener('click', (e) => { if (e.target === lightbox) lightbox.style.display = 'none'; });
+lightbox.addEventListener('click', (e) => { 
+    // Ahora cerramos solo si hace click en el fondo oscuro, no en los paneles blancos
+    if (e.target === lightbox) lightbox.style.display = 'none'; 
+});
 document.addEventListener('keydown', (e) => { if (e.key === "Escape") lightbox.style.display = 'none'; });
 
 // --- LÓGICA DEL BOTÓN VOLVER ARRIBA ---
