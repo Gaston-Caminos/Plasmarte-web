@@ -430,6 +430,7 @@ footer {
     max-height: 100%;
     object-fit: contain; /* Ajusta la imagen sin recortarla */
     user-select: none;
+    border-radius: 15px;
 }
 
 /* Botón para ocultar/mostrar panel (flota sobre la imagen) */
