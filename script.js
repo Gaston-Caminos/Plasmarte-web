@@ -1,9 +1,4 @@
 // --- 1. INYECTAR DATOS DESDE datos.js ---
-
-// Cargar la Bio
-document.getElementById('bio-p1').innerHTML = datosPlasmarte.bio.parrafo1;
-document.getElementById('bio-p2').innerHTML = datosPlasmarte.bio.parrafo2;
-
 // Generar la Galería dinámicamente
 const contenedorGaleria = document.getElementById('galeria');
 let htmlGaleria = '';

@@ -38,6 +38,10 @@ header {
     transition: all 0.3s ease;
 }
 
+section, footer {
+    scroll-margin-top: 120px; 
+}
+
 /* Evita que las imágenes se puedan arrastrar o seleccionar */
 img {
     -webkit-user-drag: none; 
@@ -75,40 +79,74 @@ nav a:hover {
 /* ======================================
    HERO
    ====================================== */
-
 .hero {
+    position: relative;
     padding: 4rem 2rem;
     text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
+    min-height: 70vh; /* Le damos una buena altura para que el video se luzca */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Evita que el video sobresalga de la sección */
 }
 
+/* Estilos del reproductor de video */
+.video-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Magia pura: recorta el video para que llene todo sin deformarse */
+    z-index: 1; /* Lo mandamos al fondo */
+}
+
+/* El filtro sobre el video */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Usamos el azul oscuro de tu paleta con un 75% de opacidad */
+    background-color: rgba(11, 42, 74, 0.75); 
+    z-index: 2; /* Arriba del video, abajo del contenido */
+}
+
+/* Contenedor del logo y textos */
+.hero-contenido {
+    position: relative;
+    z-index: 3; /* Al frente de todo */
+    max-width: 800px;
+}
+
+/* Ajustes para que el texto se lea sobre el fondo oscuro */
 .hero h1 {
     font-size: clamp(1.8rem, 4vw, 3.5rem);
-    align-items: center;
-    text-align: center;
-    white-space: nowrap; 
+    white-space: nowrap; /* Fuerza a que todo quede en una sola línea */
     margin-bottom: 1rem;
-    width: 100%; /* Asegura que tome todo el ancho disponible para centrarse bien */
+    width: 100%;
+    color: var(--color-fondo); 
 }
 
+.hero p {
+    font-size: 1.2rem;
+    color: var(--color-fondo); /* Cambia el subtítulo a color crema */
+}
 
+/* El .logo-hero queda exactamente igual que como lo tenías, con su animación latidoPintura */
 .logo-hero {
     max-width: 300px;
     width: 100%;
     margin-bottom: 1.5rem;
     filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.1));
-    
-    /* Ejecuta la animación en un bucle infinito que dura 6 segundos */
     animation: latidoPintura 6s infinite ease-in-out; 
-    /* Quitamos transform de acá para que no pelee con los keyframes */
     transition: filter 0.4s ease; 
 }
 
-/* Efecto hover: frena el "latido" y le da el brillo naranja/rojo y lo agranda */
 .logo-hero:hover {
-    animation-play-state: paused; /* Frena la animación automática */
-    transform: scale(1.08); /* Se agranda fijo */
+    animation-play-state: paused; 
+    transform: scale(1.08); 
     filter: drop-shadow(0px 0px 25px rgba(255, 51, 0, 0.6));
 }
 
@@ -131,10 +169,10 @@ nav a:hover {
 }
 
 .artista-contenedor {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 4rem;
 }
 
@@ -146,6 +184,8 @@ nav a:hover {
     border: 1px solid var(--color-primario);
     filter: grayscale(40%);
     transition: all 0.5s ease;
+    position: sticky;
+    top: 150px; 
 }
 
 .artista-foto:hover {
@@ -173,7 +213,7 @@ nav a:hover {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 3rem;
+    margin: 3rem;
     flex-wrap: wrap; 
     padding: 0 1rem;
 }
@@ -317,6 +357,7 @@ footer {
     color: white;
     padding: 1rem 2rem;
     text-decoration: none;
+    text-align: center;
     font-weight: bold;
     border-radius: 50px;
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
