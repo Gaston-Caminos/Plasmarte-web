@@ -179,7 +179,7 @@ const datosPlasmarte = {
             dimensiones: "100x100 cm"
         },
         {
-            titulo: "Estatua Jesus",
+            titulo: "Estatua Jesús",
             categoria: "artesanias",
             imagen: "imgs/estatua_jesus.png",
             descripcion: "",
